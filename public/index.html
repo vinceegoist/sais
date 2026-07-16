@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <meta
+      name="description"
+      content="Browse recipes and save your own family favorites."
+    />
+
+    <title>Sarap Recipe List</title>
+
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <a
+          class="brand"
+          href="#top"
+          aria-label="Sarap Recipe List home"
+        >
+          <span class="brand-mark" aria-hidden="true">
+            🍲
+          </span>
+
+          <span>
+            <strong>Sarap</strong>
+            <small>Recipe List</small>
+          </span>
+        </a>
+
+        <nav
+          class="main-nav"
+          aria-label="Main navigation"
+        >
+          <a href="#top">Home</a>
+          <a href="#recipes">Recipes</a>
+
+          <button
+            class="nav-add-button"
+            id="openRecipeFormButton"
+            type="button"
+          >
+            + Add Recipe
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero-section">
+        <div
+          class="hero-pattern"
+          aria-hidden="true"
+        ></div>
+
+        <div class="container hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              Lutong bahay, gawang puso
+            </p>
+
+            <h1>
+              Mas masarap ang bawat
+              <span>kainan.</span>
+            </h1>
+
+            <p class="hero-description">
+              Discover easy recipes for everyday meals,
+              then add and keep your own family favorites
+              in one cheerful recipe collection.
+            </p>
+
+            <form
+              class="hero-search"
+              id="searchForm"
+              role="search"
+            >
+              <label
+                class="sr-only"
+                for="searchInput"
+              >
+                Search recipes
+              </label>
+
+              <span aria-hidden="true">⌕</span>
+
+              <input
+                id="searchInput"
+                name="search"
+                type="search"
+                placeholder="Search chicken, pasta, soup..."
+                autocomplete="off"
+              />
+
+              <button type="submit">
+                Find Recipe
+              </button>
+            </form>
+
+            <div
+              class="hero-highlights"
+              aria-label="Application features"
+            >
+              <span>✓ RecipeAPI dishes</span>
+              <span>✓ Your own recipes</span>
+              <span>✓ Easy filters</span>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <div class="sunburst"></div>
+
+            <div
+              class="floating-card floating-card-one"
+            >
+              🌶️ <b>Flavorful</b>
+            </div>
+
+            <div
+              class="floating-card floating-card-two"
+            >
+              ⏱️ <b>Easy meals</b>
+            </div>
+
+            <div class="plate">
+              <div class="plate-inner">
+                <span class="food food-rice">🍚</span>
+                <span class="food food-chicken">🍗</span>
+                <span class="food food-greens">🥬</span>
+                <span class="food food-tomato">🍅</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="recipe-section"
+        id="recipes"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow red-eyebrow">
+                Choose your ulam
+              </p>
+
+              <h2>Recipes for every craving</h2>
+
+              <p id="resultSummary">
+                Loading delicious recipes...
+              </p>
+            </div>
+
+            <button
+              class="primary-button"
+              id="openRecipeFormButtonSecondary"
+              type="button"
+            >
+              <span>＋</span>
+              Share Your Recipe
+            </button>
+          </div>
+
+          <div
+            class="filter-bar"
+            aria-label="Recipe filters"
+          >
+            <div class="filter-field search-filter">
+              <label for="filterSearch">
+                Search
+              </label>
+
+              <input
+                id="filterSearch"
+                type="search"
+                placeholder="Recipe name"
+              />
+            </div>
+
+            <div class="filter-field">
+              <label for="cuisineFilter">
+                Cuisine
+              </label>
+
+              <select id="cuisineFilter">
+                <option value="">All cuisines</option>
+                <option value="american">American</option>
+                <option value="chinese">Chinese</option>
+                <option value="french">French</option>
+                <option value="greek">Greek</option>
+                <option value="italian">Italian</option>
+                <option value="japanese">Japanese</option>
+                <option value="mexican">Mexican</option>
+                <option value="portuguese">
+                  Portuguese
+                </option>
+                <option value="spanish">Spanish</option>
+                <option value="thai">Thai</option>
+                <option value="turkish">Turkish</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label for="difficultyFilter">
+                Difficulty
+              </label>
+
+              <select id="difficultyFilter">
+                <option value="">
+                  Any difficulty
+                </option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+            </div>
+
+            <button
+              class="filter-button"
+              id="applyFiltersButton"
+              type="button"
+            >
+              Apply
+            </button>
+
+            <button
+              class="clear-button"
+              id="clearFiltersButton"
+              type="button"
+            >
+              Clear
+            </button>
+          </div>
+
+          <div
+            class="status-panel hidden"
+            id="statusPanel"
+            role="status"
+          ></div>
+
+          <div
+            class="recipe-grid"
+            id="recipeGrid"
+            aria-live="polite"
+          ></div>
+
+          <div
+            class="pagination"
+            id="pagination"
+          >
+            <button
+              id="previousPageButton"
+              type="button"
+            >
+              ← Previous
+            </button>
+
+            <span id="pageIndicator">
+              Page 1
+            </span>
+
+            <button
+              id="nextPageButton"
+              type="button"
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="brand footer-brand">
+          <span
+            class="brand-mark"
+            aria-hidden="true"
+          >
+            🍲
+          </span>
+
+          <span>
+            <strong>Sarap</strong>
+            <small>Recipe List</small>
+          </span>
+        </div>
+
+        <p>
+          Made for learning GET and POST requests
+          with HTML, CSS, and JavaScript.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Add recipe modal -->
+    <div
+      class="modal-backdrop hidden"
+      id="recipeFormModal"
+      aria-hidden="true"
+    >
+      <section
+        class="modal recipe-form-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="recipeFormTitle"
+      >
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow red-eyebrow">
+              Your family favorite
+            </p>
+
+            <h2 id="recipeFormTitle">
+              Add a New Recipe
+            </h2>
+          </div>
+
+          <button
+            class="icon-button"
+            data-close-modal="recipeFormModal"
+            type="button"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+
+        <form id="recipeForm">
+          <div class="form-grid">
+            <div class="form-field full-width">
+              <label for="recipeName">
+                Recipe name *
+              </label>
+
+              <input
+                id="recipeName"
+                name="name"
+                minlength="3"
+                required
+                placeholder="Example: Chicken Adobo"
+              />
+            </div>
+
+            <div class="form-field full-width">
+              <label for="recipeDescription">
+                Description *
+              </label>
+
+              <textarea
+                id="recipeDescription"
+                name="description"
+                required
+                rows="3"
+                placeholder="Describe what makes this dish special."
+              ></textarea>
+            </div>
+
+            <div class="form-field">
+              <label for="recipeCuisine">
+                Cuisine
+              </label>
+
+              <input
+                id="recipeCuisine"
+                name="cuisine"
+                value="filipino"
+                placeholder="filipino"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="recipeMealType">
+                Meal type
+              </label>
+
+              <select
+                id="recipeMealType"
+                name="meal_type"
+              >
+                <option value="main">Main</option>
+                <option value="breakfast">
+                  Breakfast
+                </option>
+                <option value="soup">Soup</option>
+                <option value="snack">Snack</option>
+                <option value="dessert">
+                  Dessert
+                </option>
+                <option value="side_dish">
+                  Side dish
+                </option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="recipeDifficulty">
+                Difficulty
+              </label>
+
+              <select
+                id="recipeDifficulty"
+                name="difficulty"
+              >
+                <option value="easy">Easy</option>
+                <option value="medium">
+                  Medium
+                </option>
+                <option value="hard">Hard</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="recipeServings">
+                Servings
+              </label>
+
+              <input
+                id="recipeServings"
+                name="servings"
+                type="number"
+                min="1"
+                value="4"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="recipePrepTime">
+                Prep time (minutes)
+              </label>
+
+              <input
+                id="recipePrepTime"
+                name="prep_time"
+                type="number"
+                min="0"
+                value="10"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="recipeCookTime">
+                Cook time (minutes)
+              </label>
+
+              <input
+                id="recipeCookTime"
+                name="cook_time"
+                type="number"
+                min="0"
+                value="20"
+              />
+            </div>
+
+            <div class="form-field full-width">
+              <label for="recipeIngredients">
+                Ingredients *
+                <small>
+                  one ingredient per line
+                </small>
+              </label>
+
+              <textarea
+                id="recipeIngredients"
+                name="ingredients"
+                required
+                rows="6"
+                placeholder="1 kg chicken&#10;1/2 cup soy sauce&#10;5 cloves garlic"
+              ></textarea>
+            </div>
+
+            <div class="form-field full-width">
+              <label for="recipeInstructions">
+                Instructions *
+                <small>
+                  one step per line
+                </small>
+              </label>
+
+              <textarea
+                id="recipeInstructions"
+                name="instructions"
+                required
+                rows="6"
+                placeholder="Marinate the chicken.&#10;Simmer until tender.&#10;Serve with hot rice."
+              ></textarea>
+            </div>
+          </div>
+
+          <div
+            class="form-error hidden"
+            id="formError"
+            role="alert"
+          ></div>
+
+          <div class="modal-actions">
+            <button
+              class="secondary-button"
+              data-close-modal="recipeFormModal"
+              type="button"
+            >
+              Cancel
+            </button>
+
+            <button
+              class="primary-button"
+              id="saveRecipeButton"
+              type="submit"
+            >
+              Save Recipe
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- Recipe details modal -->
+    <div
+      class="modal-backdrop hidden"
+      id="recipeDetailsModal"
+      aria-hidden="true"
+    >
+      <section
+        class="modal details-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="detailsTitle"
+      >
+        <button
+          class="icon-button details-close"
+          data-close-modal="recipeDetailsModal"
+          type="button"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+        <div id="recipeDetailsContent"></div>
+      </section>
+    </div>
+
+    <div
+      class="toast hidden"
+      id="toast"
+      role="status"
+    ></div>
+
+    <script
+      type="module"
+      src="./js/app.js"
+    ></script>
+  </body>
+</html>
