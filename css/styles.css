@@ -1,0 +1,454 @@
+:root {
+  --background: #f4f7f5;
+  --surface: #ffffff;
+  --surface-muted: #f8faf9;
+
+  --text: #173126;
+  --text-muted: #607168;
+
+  --border: #dce6e0;
+
+  --primary: #1d8f5a;
+  --primary-dark: #146b43;
+
+  --get: #2563eb;
+  --post: #7c3aed;
+
+  --success: #16794a;
+  --error: #b42318;
+
+  --warning-background: #fff8e6;
+  --warning-border: #f4cf6b;
+
+  --shadow: 0 18px 50px rgba(26, 71, 49, 0.08);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(29, 143, 90, 0.12),
+      transparent 30%
+    ),
+    var(--background);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+/* HEADER */
+
+.site-header {
+  padding: 48px 0 28px;
+}
+
+.header-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+
+  color: var(--primary);
+
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  line-height: 1;
+}
+
+.subtitle {
+  max-width: 660px;
+  margin-bottom: 0;
+
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.status-badge {
+  display: inline-flex;
+
+  padding: 9px 14px;
+
+  border: 1px solid rgba(29, 143, 90, 0.25);
+  border-radius: 999px;
+
+  color: var(--primary-dark);
+  background: rgba(255, 255, 255, 0.75);
+
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+/* PAGE CONTENT */
+
+.page-content {
+  padding-bottom: 48px;
+}
+
+.notice {
+  margin-bottom: 22px;
+  padding: 14px 16px;
+
+  border: 1px solid var(--warning-border);
+  border-radius: 14px;
+
+  color: #6c5212;
+  background: var(--warning-background);
+
+  line-height: 1.55;
+}
+
+/* GRID */
+
+.request-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 22px;
+}
+
+/* PANELS */
+
+.panel {
+  padding: 24px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin-bottom: 22px;
+}
+
+.panel-heading > div {
+  min-width: 0;
+}
+
+.panel-heading h2 {
+  margin: 10px 0 0;
+  font-size: 1.35rem;
+}
+
+.panel-heading code {
+  max-width: 48%;
+
+  padding: 7px 9px;
+
+  border-radius: 8px;
+
+  color: var(--text-muted);
+  background: var(--surface-muted);
+
+  font-size: 0.76rem;
+
+  overflow-wrap: anywhere;
+}
+
+/* REQUEST METHOD LABELS */
+
+.method {
+  display: inline-flex;
+
+  padding: 5px 9px;
+
+  border-radius: 7px;
+
+  color: #ffffff;
+
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+}
+
+.method-get {
+  background: var(--get);
+}
+
+.method-post {
+  background: var(--post);
+}
+
+/* FORMS */
+
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+.form label {
+  margin-top: 5px;
+
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+
+  padding: 12px 13px;
+
+  border: 1px solid var(--border);
+  border-radius: 11px;
+
+  color: var(--text);
+  background: #ffffff;
+
+  outline: none;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(29, 143, 90, 0.12);
+}
+
+.form textarea {
+  resize: vertical;
+}
+
+.form small {
+  color: var(--text-muted);
+}
+
+/* BUTTONS */
+
+button {
+  margin-top: 9px;
+  padding: 13px 16px;
+
+  border: none;
+  border-radius: 11px;
+
+  color: #ffffff;
+  background: var(--primary);
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    background 150ms ease,
+    opacity 150ms ease;
+}
+
+button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+/* REQUEST STATUS */
+
+.request-status {
+  min-height: 24px;
+  margin: 16px 0 0;
+
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.request-status.success {
+  color: var(--success);
+}
+
+.request-status.error {
+  color: var(--error);
+}
+
+/* RECIPE RESULTS */
+
+.recipe-list {
+  display: grid;
+  gap: 12px;
+
+  margin-top: 14px;
+}
+
+.recipe-card {
+  padding: 15px;
+
+  border: 1px solid var(--border);
+  border-radius: 13px;
+
+  background: var(--surface-muted);
+}
+
+.recipe-card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.recipe-card p {
+  margin-bottom: 8px;
+
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.recipe-meta span {
+  padding: 4px 8px;
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  color: var(--text-muted);
+  background: #ffffff;
+
+  font-size: 0.75rem;
+}
+
+/* RAW RESPONSE */
+
+.response-details {
+  margin-top: 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--surface-muted);
+}
+
+.response-details summary {
+  padding: 12px 14px;
+
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.response-details pre {
+  max-height: 360px;
+  margin: 0;
+  padding: 14px;
+
+  overflow: auto;
+
+  border-top: 1px solid var(--border);
+
+  color: #d7f9e5;
+  background: #10271d;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 0.8rem;
+  line-height: 1.55;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* FOOTER */
+
+.site-footer {
+  padding: 8px 0 30px;
+
+  color: var(--text-muted);
+
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 860px) {
+  .request-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-header {
+    padding-top: 30px;
+  }
+
+  .header-content,
+  .panel-heading {
+    flex-direction: column;
+  }
+
+  .panel-heading code {
+    max-width: 100%;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+}
