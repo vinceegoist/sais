@@ -1,2 +1,5 @@
 # sais
-VINCE, NOREEN, CHILSEA
+Leader: Vince Mendoza
+MEMBERS:
+Chilsea Mendoza
+Noreen Gonzales
